@@ -12,7 +12,7 @@
 
 ## Development Log
 Github Wiki보다 Notion이 편해서 Notion에 작성합니다.  
-[개발 일지]('https://www.notion.so/Image-Editor-6a4d615760aa42b6a6426ad1c24f2dd9')
+[개발 일지](https://www.notion.so/Image-Editor-6a4d615760aa42b6a6426ad1c24f2dd9)
 
 
 ## ETC
