@@ -1,4 +1,4 @@
-// import {stringToHTMLElement} from "../util/DomUtil";
+import {stringToHTMLElement} from "../util/DomUtil";
 import {initWithLookupElement} from "../util/LookUpElement";
 
 interface ViewLifeCycle {
@@ -97,7 +97,7 @@ export abstract class AbstractView implements IAbstractView {
     }
     
     private _lookUpProperty(): void {
-        // this.element = stringToHTMLElement(this.htmlText);
+        this.element = stringToHTMLElement(this.htmlText);
         initWithLookupElement(this, this.element);
     }
 }
