@@ -1,7 +1,7 @@
 import {App} from './App';
 import '../static/scss/index.scss'
 
-window.onload = () => {
+window.addEventListener('DOMContentLoaded', () => {
     const root = document.querySelector('#root') as HTMLElement;
-    const app = new App(root);
-}
+    new App(root);
+});

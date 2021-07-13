@@ -1,5 +1,5 @@
 import {stringToHTMLElement} from "../util/DomUtil";
-import {initWithLookupElement} from "../util/LookUpElement";
+import {initWithLookupElement} from "../util/LookupElement";
 
 interface ViewLifeCycle {
     render(): this;
