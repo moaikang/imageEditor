@@ -4,25 +4,33 @@
   "description": "Web Image Editor made by Moai",
   "main": "src/index.ts",
   "scripts": {
-    "test": "npm run test",
+    "test": "jest",
+    "test-watch": "jest --watchAll",
     "dev": "npx webpack serve",
-    "dev:temp": "npx webpack && npx webpack serve"
+    "build": "npx webpack"
   },
   "author": "moaikang",
   "license": "ISC",
   "devDependencies": {
+    "@types/autobind-decorator": "^2.1.0",
+    "@types/jest": "^26.0.23",
     "@types/webpack": "^5.28.0",
     "css-loader": "^5.2.6",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.1",
+    "jest": "^27.0.4",
     "mini-css-extract-plugin": "^1.6.0",
     "sass": "^1.34.1",
     "sass-loader": "^12.1.0",
+    "ts-jest": "^27.0.3",
     "ts-loader": "^9.2.3",
     "typescript": "^4.3.2",
     "url-loader": "^4.1.1",
     "webpack": "^5.38.1",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "autobind-decorator": "^2.4.0"
   }
 }
