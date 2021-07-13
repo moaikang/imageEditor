@@ -24,12 +24,11 @@ module.exports = {
    ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js']
+    extensions: ['.ts', '.js']
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'static', 'index.html'),
-      inject: false
+      template: path.join(__dirname, 'static', 'index.html')
     }),
     new MiniCssExtractPlugin({filename: 'index.css'}),
   ],
@@ -37,14 +36,8 @@ module.exports = {
     minimize: true
   },
   devServer: {
-    contentBase: ['./src', './dist'],
-    compress: true,
-    port: 3000,
-    hot: true,
-    open: true,
-    publicPath: '/dist',
-    watchContentBase: true,
-    inline: true,
+    host: "localhost", // live-server host 및 port
+    port: 5500,
   },
   target: 'web'
 };
