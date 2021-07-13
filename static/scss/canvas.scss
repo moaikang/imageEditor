@@ -1,0 +1,11 @@
+.canvas-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 10px 0;
+
+  #canvas {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+  }
+}
