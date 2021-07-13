@@ -1,7 +1,7 @@
 import {AbstractView} from "../infra/AbstractView";
 import {LoadButton} from "./LoadButton";
 import {DownloadButton} from "./DownloadButton";
-import {LookUpElement} from "../util/LookUpElement";
+import {LookUpElement} from "../util/LookupElement";
 
 const HTML = `
 <section class="persist-area">
