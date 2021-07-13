@@ -1,0 +1,53 @@
+$outline-width: 2px;
+$shadow-width: 1px;
+
+$button-background: #C0C0C0;
+$sec-button-background: #808080;
+$shadow-color: black;
+
+.editor-btn {
+  background: $button-background;
+  width: 150px;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 5px;
+  font-family: 'DOSGothic';
+  text-decoration: none;
+  color: black;
+  box-shadow: inset (-$shadow-width) (-$shadow-width) 0px 0px $shadow-color;
+
+  &:hover,
+  &:focus {
+    background: $sec-button-background;
+    box-shadow: inset (-$shadow-width*1.5) (-$shadow-width*1.5) 0px 0px $shadow-color;
+  }
+
+  &:active {
+    box-shadow: inset $shadow-width $shadow-width 0px 0px $shadow-color;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+  }
+
+  &:before {
+    top: -$outline-width;
+    left: 0;
+    border-top: $outline-width black solid;
+    border-bottom: $outline-width black solid;
+  }
+
+  &:after {
+    left: -$outline-width;
+    top: 0;
+    border-left: $outline-width black solid;
+    border-right: $outline-width black solid;
+  }
+}

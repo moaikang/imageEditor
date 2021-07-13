@@ -1,3 +1,32 @@
+@charset "utf-8";
+
+@import "reset.scss";
+@import "canvas.scss";
+@import "header.scss";
+@import "component.scss";
+@import "persister";
+@import "menuBar.scss";
+@import "persister.scss";
+
+@font-face {
+  font-family: 'DOSGothic';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/DOSGothic.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
-  background: green;
+  background: #010080;
+}
+
+#editor-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1060px;
+  height: 640px;
+  background: #C0C0C0;
+  transform: translate(-50%, -50%);
+  box-shadow: 15px 15px rgba(0, 0, 0, 0.5);
+  padding: 5px;
 }
