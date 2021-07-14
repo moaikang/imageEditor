@@ -18,7 +18,6 @@ export class Button extends AbstractView {
     protected onFirstRender() {
         super.onFirstRender();
         this._setAttribute()
-        this._bindEvents();
     }
     
     public disable(): void {
@@ -39,11 +38,5 @@ export class Button extends AbstractView {
         this.element.style.width = px(this._buttonProps.width);
         this.element.style.height = px(this._buttonProps.height);
         this.element.textContent = this._buttonProps.text;
-    }
-    
-    private _bindEvents(): void {
-        if (this._buttonProps.onClick) {
-            this.element.addEventListener('click', this._buttonProps.onClick);
-        }
     }
 }
