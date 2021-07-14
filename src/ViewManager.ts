@@ -18,7 +18,7 @@ export class ViewManager {
         this._editorWrapperEl = this._buildEditorWrapperEl();
         
         this._header = new HeaderRoot();
-        this._persister = new PersisterRoot();
+        this._persister = new PersisterRoot(this._model);
         this._canvas = new CanvasRoot(this._model);
         this._menuBar = new MenuBarRoot();
     }

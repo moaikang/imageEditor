@@ -1,6 +1,7 @@
 import {ModelManager} from "../model/ModelManager";
 import {AbstractView} from "../infra/AbstractView";
 import {LookUpElement} from "../util/LookupElement";
+import autobind from "autobind-decorator";
 
 const HTML = `
 <section class="canvas-wrapper">
@@ -26,21 +27,15 @@ export class CanvasRoot extends AbstractView {
     protected onFirstRender() {
         super.onFirstRender();
         this._ctx = this._canvasEl.getContext('2d')!;
-        this._loadDefaultImage();
+        this._bindEvents();
     }
     
-    private _loadDefaultImage(): void {
-        const defaultImage = new Image();
-        defaultImage.src = 'https://d3rr2gvhjw0wwy.cloudfront.net/uploads/activity_headers/134196/2000x2000-0-70-26479c61882c4ffeed3d976caf233de2.jpg';
-        
-        defaultImage.addEventListener('load', () => {
-            const canvasBoundingRect = this._canvasEl.getBoundingClientRect();
-            const ratioOfImg = defaultImage.height / defaultImage.width;
-            const canvasWidth = canvasBoundingRect.width < defaultImage.width ? canvasBoundingRect.width : defaultImage.width;
-            // this._ctx.drawImage(defaultImage, 0, 0, canvasWidth, canvasWidth * ratioOfImg);
-            defaultImage.width = 50;
-            defaultImage.height = 50;
-            this._ctx.drawImage(defaultImage, 0, 0);
-        })
+    private _bindEvents(): void {
+        this._model.canvas.on('canvas-image-change', this._onCanvasImageChange);
+    }
+    
+    @autobind
+    private _onCanvasImageChange(image: HTMLImageElement): void {
+        this._ctx.drawImage(image, 0, 0);
     }
 }
