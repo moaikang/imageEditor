@@ -3,7 +3,7 @@ import {AbstractView} from "../infra/AbstractView";
 import {LookUpElement} from "../util/LookupElement";
 import autobind from "autobind-decorator";
 import {px} from "../util/CSSUtil";
-import {Palette} from "../util/Palette";
+import {Palette} from "../util/Palette"
 
 const HTML = `
 <section class="canvas-wrapper">
@@ -49,7 +49,7 @@ export class CanvasRoot extends AbstractView {
             width: wrapperBoundingRect.width,
             height: wrapperBoundingRect.height,
         });
-        this._fillCanvasBlack();
+        this._fillBackground();
     }
     
     @autobind
@@ -59,13 +59,17 @@ export class CanvasRoot extends AbstractView {
     }
     
     @autobind
-    private _onCanvasImageChange(image: HTMLImageElement, x: number, y: number, width: number, height: number): void {
-        this._fillCanvasBlack();
-        this._ctx.drawImage(image, 0, 0, image.width, image.height, x, y, width, height);
+    private _onCanvasImageChange(image: HTMLImageElement, x: number | null, y: number | null, width: number | null, height: number | null): void {
+        this._fillBackground();
+        if (x === null || y === null || width === null || height === null) {
+            this._fillBackground();
+        } else {
+            this._ctx.drawImage(image, 0, 0, image.width, image.height, x, y, width, height);
+        }
     }
-
-    private _fillCanvasBlack(): void {
-        this._ctx.fillStyle = Palette.BLACK;
+    
+    private _fillBackground(): void {
+        this._ctx.fillStyle = Palette.MODAL_BACKGROUND_COLOR;
         this._ctx.fillRect(0, 0, this._model.canvas.canvasWidth, this._model.canvas.canvasHeight);
     }
 }

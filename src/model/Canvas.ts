@@ -37,6 +37,16 @@ export class CanvasModel {
         this._watcher.emit('canvas-image-change', this._image, this._x, this._y, this._width, this._height);
     }
     
+    public clearCanvas(): void {
+        this._image = null;
+        this._x = null;
+        this._y = null;
+        this._width = null;
+        this._height = null;
+    
+        this._watcher.emit('canvas-image-change', this._image, this._x, this._y, this._width, this._height);
+    }
+    
     public on(eventName: CanvasModelEvent, listener: any): void {
         this._watcher.on(eventName, listener);
     }

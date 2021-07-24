@@ -3,9 +3,11 @@ import {CanvasRoot} from "./canvas/CanvasRoot";
 import {HeaderRoot} from "./header/HeaderRoot";
 import {PersisterRoot} from "./persister/PersisterRoot";
 import {MenuBarRoot} from "./menuBar/MenuBarRoot";
+import {CommandRunner} from "./command/CommandRunner";
 
 export class ViewManager {
     private _model: ModelManager;
+    private _command: CommandRunner;
     
     private _editorWrapperEl: HTMLElement;
     private _header: HeaderRoot;
@@ -13,12 +15,14 @@ export class ViewManager {
     private _canvas: CanvasRoot;
     private _menuBar: MenuBarRoot;
     
-    constructor(model: ModelManager) {
+    constructor(model: ModelManager, command: CommandRunner) {
         this._model = model;
+        this._command = command;
+        
         this._editorWrapperEl = this._buildEditorWrapperEl();
         
         this._header = new HeaderRoot();
-        this._persister = new PersisterRoot(this._model);
+        this._persister = new PersisterRoot(this._model, this._command);
         this._canvas = new CanvasRoot(this._model);
         this._menuBar = new MenuBarRoot();
     }
