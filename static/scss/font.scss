@@ -1,0 +1,9 @@
+$defaultFont: 'DOSGothic';
+$fontSrc: 'https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/DOSGothic.woff';
+
+@font-face {
+  font-family: $defaultFont;
+  src: url($fontSrc) format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

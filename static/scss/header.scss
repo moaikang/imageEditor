@@ -1,13 +1,17 @@
+@import "color.scss";
+@import "layout.scss";
+@import "font.scss";
+
 .editor-header {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 30px;
+  height: $headerHeight;
   padding: 0 12px;
-  background: #010080;
+  background: $BGColor;
 
   .editor-header-text {
-    font-family: 'DOSGothic';
+    font-family: $defaultFont;
     color: white;
     font-size: 1.2rem;
   }
