@@ -42,7 +42,6 @@ describe('Command Runner', () => {
     let commandHistory: CommandHistory;
     let commandRunner: CommandRunner;
     let testCommand: TestCommand;
-    let mockedFn: any;
     
     beforeEach(() => {
         model = new ModelManager();
@@ -56,13 +55,14 @@ describe('Command Runner', () => {
             this._history.pushUndoStack(command);
         }
         
-        mockedFn = CommandRunner.prototype.run = jest.fn().mockImplementation(mockRun.bind(commandRunner))
+        CommandRunner.prototype.run = jest.fn().mockImplementation(mockRun.bind(commandRunner))
     })
     
     it('아무것도 안한 상태에서 undo를 실행하면 아무일도 일어나지 않는다.', () => {
         // given
         // when
         commandRunner.undo();
+        
         // then
         expect(testCommand.trace.length).toBe(0);
     });
