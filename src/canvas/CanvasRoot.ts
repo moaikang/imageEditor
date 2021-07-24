@@ -59,17 +59,21 @@ export class CanvasRoot extends AbstractView {
     }
     
     @autobind
-    private _onCanvasImageChange(image: HTMLImageElement, x: number | null, y: number | null, width: number | null, height: number | null): void {
+    private _onCanvasImageChange(image: HTMLImageElement | null, x: number | null, y: number | null, width: number | null, height: number | null): void {
         this._fillBackground();
-        if (x === null || y === null || width === null || height === null) {
+        if (this._isEmptyCanvas(image, x, y, width, height)) {
             this._fillBackground();
         } else {
-            this._ctx.drawImage(image, 0, 0, image.width, image.height, x, y, width, height);
+            this._ctx.drawImage(image!, 0, 0, image!.width, image!.height, x!, y!, width!, height!);
         }
     }
     
     private _fillBackground(): void {
         this._ctx.fillStyle = Palette.MODAL_BACKGROUND_COLOR;
         this._ctx.fillRect(0, 0, this._model.canvas.canvasWidth, this._model.canvas.canvasHeight);
+    }
+    
+    private _isEmptyCanvas(image: HTMLImageElement | null, x: number | null, y: number | null, width: number | null, height: number | null): boolean {
+        return image === null && x === null && y === null && width === null && height === null;
     }
 }
