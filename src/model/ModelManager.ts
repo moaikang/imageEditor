@@ -1,6 +1,10 @@
 import {CanvasModel} from "./Canvas";
 
-export class ModelManager {
+export interface IModel {
+    canvas: CanvasModel;
+}
+
+export class ModelManager implements IModel{
     private _canvas: CanvasModel;
     
     constructor() {

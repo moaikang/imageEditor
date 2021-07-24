@@ -1,9 +1,9 @@
-import {Button} from "../component/Button";
+import {Button, IButtonProps} from "../component/Button";
 import autobind from 'autobind-decorator';
-import {IButtonProps} from "../component/IButtonProps";
 import {AbstractView} from "../infra/AbstractView";
 import {LookUpElement} from "../util/LookupElement";
 import {ModelManager} from "../model/ModelManager";
+import {CommandRunner} from "../command/CommandRunner";
 
 const buttonProps: IButtonProps = {
     width: 150,
@@ -22,13 +22,15 @@ export class LoadButton extends AbstractView {
     protected htmlText: string = HTML;
     private _button: Button;
     private _model: ModelManager;
+    private _command: CommandRunner
     
     @LookUpElement('.image-input')
     private _inputEl!: HTMLInputElement;
     
-    constructor(model: ModelManager) {
+    constructor(model: ModelManager, command: CommandRunner) {
         super();
         this._model = model;
+        this._command = command;
         this._button = new Button(buttonProps);
     }
     
@@ -67,6 +69,6 @@ export class LoadButton extends AbstractView {
     
     @autobind
     private _onImageLoaded(e: Event): void {
-        this._model.canvas.setImage(e.target as HTMLImageElement);
+        this._command.run('canvas-image-change', e.target as HTMLImageElement);
     }
 }

@@ -1,6 +1,11 @@
 import {AbstractView} from "../infra/AbstractView";
-import {IButtonProps} from "./IButtonProps";
 import {px} from "../util/CSSUtil";
+
+export interface IButtonProps {
+    width: number;
+    height: number;
+    text: string;
+}
 
 const HTML = `
 <button class="editor-btn"></button>
