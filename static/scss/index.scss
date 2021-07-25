@@ -8,26 +8,34 @@
 @import "menuBar.scss";
 @import "persister.scss";
 @import "util.scss";
-
-@font-face {
-  font-family: 'DOSGothic';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/DOSGothic.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
+@import "font.scss";
+@import "color.scss";
+@import "layout.scss";
+@import "responsive.scss";
 
 body {
-  background: #010080;
+  font-family: $defaultFont;
+  background: $BGColor;
 }
 
 #editor-wrapper {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 1060px;
-  height: 640px;
-  background: #C0C0C0;
+  width: $modalWidth;
+  height: $modalHeight;
+  background: $modalBGColor;
   transform: translate(-50%, -50%);
   box-shadow: 15px 15px rgba(0, 0, 0, 0.5);
   padding: 5px;
+}
+
+#mobile {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: white;
+  font-size: 2em;
+  line-height: 1.2;
+  transform: translate(-50%, -50%);
 }

@@ -5,7 +5,7 @@ export interface IModel {
 }
 
 export class ModelManager implements IModel{
-    private _canvas: CanvasModel;
+    private readonly _canvas: CanvasModel;
     
     constructor() {
         this._canvas = new CanvasModel();

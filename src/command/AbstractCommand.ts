@@ -1,5 +1,5 @@
 import {IModel} from "../model/ModelManager";
-import {Fn} from "../util/TypeUtil";
+import {Fn, ParameterlessFn} from "../util/TypeUtil";
 import {initWithAssignCommandName} from "../util/CommandApiDecorator";
 
 let cnt = 0;
@@ -12,15 +12,15 @@ export interface ICommand {
     id: string;
     name: string;
     do: Fn;
-    undo: Fn;
-    redo: Fn;
+    undo: ParameterlessFn;
+    redo: ParameterlessFn;
 }
 
 export abstract class AbstractCommand implements ICommand {
-    protected model: IModel;
+    protected readonly model: IModel;
     
-    private _id: string;
-    private _name: string;
+    private readonly _id: string;
+    private readonly _name: string;
     
     protected constructor(model: IModel) {
         this.model = model;

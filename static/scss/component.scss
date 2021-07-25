@@ -1,19 +1,20 @@
+@import "color.scss";
+@import "font.scss";
+
 $outline-width: 2px;
 $shadow-width: 1px;
-
-$button-background: #C0C0C0;
 $sec-button-background: #808080;
 $shadow-color: black;
 
 .editor-btn {
-  background: $button-background;
+  background: $modalBGColor;
   width: 150px;
   display: inline-block;
   position: relative;
   text-align: center;
+  font-family: $defaultFont;
   font-size: 1.2rem;
   padding: 5px;
-  font-family: 'DOSGothic';
   text-decoration: none;
   color: black;
   box-shadow: inset (-$shadow-width) (-$shadow-width) 0px 0px $shadow-color;

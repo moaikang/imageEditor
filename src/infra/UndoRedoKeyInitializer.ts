@@ -1,6 +1,7 @@
 import {CommandRunner} from "../command/CommandRunner";
 import {isCmdOrCtrlKeyPressed} from "../util/KeyUtil";
 import autobind from "autobind-decorator";
+import {KeyCode} from "../util/keyCode";
 
 export class UndoRedoKeyInitializer {
     private _command: CommandRunner;
@@ -24,10 +25,10 @@ export class UndoRedoKeyInitializer {
     }
     
     private _isUndoInput(e: KeyboardEvent): boolean {
-        return isCmdOrCtrlKeyPressed(e) && e.key === 'z'
+        return isCmdOrCtrlKeyPressed(e) && e.key === KeyCode.Z
     }
     
     private _isRedoInput(e: KeyboardEvent): boolean {
-        return isCmdOrCtrlKeyPressed(e) && e.key == 'z' && e.shiftKey
+        return isCmdOrCtrlKeyPressed(e) && e.key == KeyCode.Z && e.shiftKey
     }
 }

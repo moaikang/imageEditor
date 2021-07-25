@@ -1,0 +1,22 @@
+@import "layout.scss";
+
+@media (min-width: 0px) and (max-width: 430px) {
+  #editor-wrapper {
+    display: none;
+  }
+  #mobile {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 430px) and (max-width: $modalWidth) {
+  #editor-wrapper {
+    display: none;
+  }
+}
+
+@media (min-width: $modalWidth) {
+  #mobile {
+    display: none;
+  }
+}
