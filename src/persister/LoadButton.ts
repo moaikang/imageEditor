@@ -1,7 +1,7 @@
 import {Button, IButtonProps} from "../component/Button";
 import autobind from 'autobind-decorator';
 import {AbstractView} from "../infra/AbstractView";
-import {LookUpElement} from "../util/LookupElement";
+import {LookUpElement} from "../util/LookUpElement";
 import {ModelManager} from "../model/ModelManager";
 import {CommandRunner} from "../command/CommandRunner";
 

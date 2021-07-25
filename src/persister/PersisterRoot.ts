@@ -1,7 +1,7 @@
 import {AbstractView} from "../infra/AbstractView";
 import {LoadButton} from "./LoadButton";
 import {DownloadButton} from "./DownloadButton";
-import {LookUpElement} from "../util/LookupElement";
+import {LookUpElement} from "../util/LookUpElement";
 import {ModelManager} from "../model/ModelManager";
 import {CommandRunner} from "../command/CommandRunner";
 

@@ -1,37 +1,40 @@
-name: Project build
-on: 
-  push:                               # master Branch에서 push 이벤트가 일어났을 때만 실행
+name: Deploy to Production
+
+on:
+  push:
     branches:
       - master
 
 jobs:
-  build:
-    runs-on: ubuntu-18.04
+  deploy:
+    name: Build, Deploy to S3 bucket
+    runs-on: [ubuntu-latest]
+
+    strategy:
+      matrix:
+        node-version: [12.16.x]
+
     steps:
-      - name: Checkout source code.   # 레포지토리 체크아웃
-        uses: actions/checkout@master
+      - uses: actions/checkout@v2
 
-      - name: Cache node modules      # node modules 캐싱
-        uses: actions/cache@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
         with:
-          path: node_modules
-          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.OS }}-build-
-            ${{ runner.OS }}-
+          node-version: ${{ matrix.node-version }}
 
-      - name: Install Dependencies    # 의존 파일 설치
+      - name: Npm install
         run: npm install
 
-      - name: Build                   # React Build
+      - name: Build
         run: npm run build
 
-      - name: Deploy                  # S3에 배포하기
+      - name: Transfer to S3 for serving static
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --delete
         env:
+          AWS_S3_BUCKET: moaimage-editor
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: |
-          aws s3 cp \
-            --recursive \
-            --region ap-northeast-2 \
-            build s3://moaimage-editor # 자신의 레포지토리로 변경해주세요.
+          AWS_REGION: ap-northeast-2
+          SOURCE_DIR: 'dist'

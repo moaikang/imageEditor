@@ -1,6 +1,6 @@
 import {ModelManager} from "../model/ModelManager";
 import {AbstractView} from "../infra/AbstractView";
-import {LookUpElement} from "../util/LookupElement";
+import {LookUpElement} from "../util/LookUpElement";
 import autobind from "autobind-decorator";
 import {px} from "../util/CSSUtil";
 import {Palette} from "../util/Palette"
